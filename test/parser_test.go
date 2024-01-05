@@ -8,12 +8,14 @@ import (
 )
 
 func TestParsingIntegers(t *testing.T) {
-	bencode_string := "i123e"
-	actual_value := 123
+	bencode_strings := []string{"i123e", "i-123e"}
+	actual_values := []int{123, -123}
 
-	parsed_value, err := bencode.Parse([]byte(bencode_string))
-	if err != nil {
-		t.Error(err)
+	for i, bencode_string := range bencode_strings {
+		parsed_value, err := bencode.Parse([]byte(bencode_string))
+		if err != nil {
+			t.Error(err)
+		}
+		assert.Equal(t, parsed_value, actual_values[i])
 	}
-	assert.Equal(t, parsed_value, actual_value)
 }
