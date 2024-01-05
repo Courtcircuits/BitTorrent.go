@@ -19,3 +19,17 @@ func TestParsingIntegers(t *testing.T) {
 		assert.Equal(t, parsed_value, actual_values[i])
 	}
 }
+
+func TestParsingStrings(t *testing.T) {
+	bencode_strings := []string{"4:spam", "0:", "5:hello", "12:hello world!"}
+	actual_values := []string{"spam", "", "hello", "hello world!"}
+
+	for i, bencode_string := range bencode_strings {
+		parsed_value, err := bencode.Parse([]byte(bencode_string))
+		if err != nil {
+			t.Error(err)
+		}
+		assert.Equal(t, parsed_value, actual_values[i])
+	}
+}
+
