@@ -52,7 +52,7 @@ func parseStrings(data []byte, pointer *int) (string, error) {
 }
 
 func parseLists(data []byte, pointer *int) ([]interface{}, error) {
-	var list []interface{}
+	list := []interface{}{} //dont know if this is the best way to do it
 	for data[*pointer] != 'e' {
 		value, err := parseAux(data, pointer)
 		if err != nil {
