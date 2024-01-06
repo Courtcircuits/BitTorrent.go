@@ -33,3 +33,19 @@ func TestParsingStrings(t *testing.T) {
 	}
 }
 
+func TestParsingLists(t *testing.T) {
+	bencode_strings := []string{"l4:spam4:eggse"/*, "le", "l4:spami123ee"*/}
+	actual_values := [][]interface{}{
+		{"spam", "eggs"},
+		// {},
+		// {"spam", 123},
+	}
+
+	for i, bencode_string := range bencode_strings {
+		parsed_value, err := bencode.Parse([]byte(bencode_string))
+		if err != nil {
+			t.Error(err)
+		}
+		assert.Equal(t, actual_values[i], parsed_value)
+	}
+}

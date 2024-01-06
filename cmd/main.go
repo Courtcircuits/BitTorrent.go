@@ -1,7 +1,12 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+
+	"github.com/Courtcircuits/BitTorrent.go/bencode"
+)
 
 func main() {
-	fmt.Println("Hello, World!")
+	integer:= "l4:spam4:eggsi-32el4:spami32eee"
+	fmt.Println(bencode.Parse([]byte(integer)))
 }
