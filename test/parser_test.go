@@ -34,11 +34,11 @@ func TestParsingStrings(t *testing.T) {
 }
 
 func TestParsingLists(t *testing.T) {
-	bencode_strings := []string{"l4:spam4:eggse"/*, "le", "l4:spami123ee"*/}
+	bencode_strings := []string{"l4:spam4:eggse", "le", "l4:spami123ee"}
 	actual_values := [][]interface{}{
 		{"spam", "eggs"},
-		// {},
-		// {"spam", 123},
+		{},
+		{"spam", 123},
 	}
 
 	for i, bencode_string := range bencode_strings {
