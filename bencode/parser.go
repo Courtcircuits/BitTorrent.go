@@ -29,6 +29,7 @@ func parseInteger(data []byte, pointer *int) (int, error) {
 		next(data, pointer)
 	}
 	value, err := strconv.Atoi(stringed_integer)
+	next(data, pointer) // skip 'e'
 	return value, err
 }
 
